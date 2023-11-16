@@ -42,7 +42,49 @@ router.post('/createuser',[
     }catch(error)
     {
       console.error(error.message);
-      res.status(500).send("Some error occured");
+      res.status(500).send("Internal error occur");
     }
+})
+
+//Authentication using POST
+router.post('/login',[
+  body('email', 'Enter a valid email').isEmail(),
+  body('password','Password cannot be blank').exists(),  //If password is empty, it will not run
+
+],async (req,res)=>{
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  const {email,password}=req.body;
+
+  //If they don't find user, they won't bother to send in server side
+  try{
+  let user=await User.findOne({email});
+  if(!user)
+  {
+    return res.status(400).json({error:"Please give correct crendantials"});
+  }
+  const passwordCompare=await bcrypt.compare(password,user.password);  //Checking password of existing  with given password from the user 
+  if(!passwordCompare)
+  {
+    return res.status(400).json({error:"Please give correct crendantials"});
+  }
+  
+    const data={
+      user:{
+        id:user.id
+      }
+      }
+      const authtoken =jwt.sign(data,JWT_SECRET);
+      res.json({authtoken})
+  
+
+  }
+  catch(error){
+ console.error(error.message);
+ res.status(500).send("Internal error occur");
+  }
+  
 })
 module.exports= router
