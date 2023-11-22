@@ -34,7 +34,7 @@ router.post('/addnote', fetchuser,[
         const savenote=await note.save();
         res.json(savenote)
          
-        res.json(note)
+        //res.json(note)
       
     } catch (error) {
         console.error(error.message);
@@ -43,4 +43,54 @@ router.post('/addnote', fetchuser,[
     }
     
 })
+
+//Route 03: Update an existng note under a existing valid user and only to that user /api/note/updatenote
+router.put('/updatenote/:id', fetchuser,[
+] ,async(req,res)=>{
+const {title,description,tag}=req.body;
+const newNotes={};    //New notes checked if this things are available
+if(title){newNotes.title=title};
+if(description){newNotes.description=description};
+if(tag){newNotes.tag=tag};
+
+
+let note=await Note.findById(req.params.id);
+if(!note)                 //Check if the user has any notes
+{
+    return res.status(404).send("Not found")
+}
+
+if(note.user.toString()!==req.user.id)    //Check the user is updating his/her notes
+{
+   return res.status(401).send("Not allowed")
+}
+note=await Note.findByIdAndUpdate(req.params.id,{$set:newNotes},{new:true})
+res.json({note});
+
+})
+
+//Route 04: Delete an existng note under a existing valid user and only to that user /api/note/deletenote
+router.delete('/deletenote/:id', fetchuser,[
+] ,async(req,res)=>{
+const {title,description,tag}=req.body;
+
+
+//Find the notes to be deleted
+let note=await Note.findById(req.params.id);
+if(!note)                 //Check if the user has any notes
+{
+    return res.status(404).send("Not found")
+}
+
+if(note.user.toString()!==req.user.id)    //Check the user is updating his/her notes
+{
+   return res.status(401).send("Not allowed")
+}
+note=await Note.findByIdAndDelete(req.params.id)
+res.json({"Success": "Note has been removed",note:note});
+
+})
+
+
+
 module.exports= router
