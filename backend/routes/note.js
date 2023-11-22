@@ -47,7 +47,9 @@ router.post('/addnote', fetchuser,[
 //Route 03: Update an existng note under a existing valid user and only to that user /api/note/updatenote
 router.put('/updatenote/:id', fetchuser,[
 ] ,async(req,res)=>{
-const {title,description,tag}=req.body;
+    try {
+        
+        const {title,description,tag}=req.body;
 const newNotes={};    //New notes checked if this things are available
 if(title){newNotes.title=title};
 if(description){newNotes.description=description};
@@ -66,12 +68,20 @@ if(note.user.toString()!==req.user.id)    //Check the user is updating his/her n
 }
 note=await Note.findByIdAndUpdate(req.params.id,{$set:newNotes},{new:true})
 res.json({note});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal error occur");
+        
+        
+    }
+
 
 })
 
 //Route 04: Delete an existng note under a existing valid user and only to that user /api/note/deletenote
 router.delete('/deletenote/:id', fetchuser,[
 ] ,async(req,res)=>{
+    try{
 const {title,description,tag}=req.body;
 
 
@@ -88,6 +98,13 @@ if(note.user.toString()!==req.user.id)    //Check the user is updating his/her n
 }
 note=await Note.findByIdAndDelete(req.params.id)
 res.json({"Success": "Note has been removed",note:note});
+    }
+    catch
+    {
+        console.error(error.message);
+        res.status(500).send("Internal error occur");
+        
+    }
 
 })
 
