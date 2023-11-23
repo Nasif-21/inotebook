@@ -78,6 +78,8 @@ res.json({note});
 
 })
 
+
+
 //Route 04: Delete an existng note under a existing valid user and only to that user /api/note/deletenote
 router.delete('/deletenote/:id', fetchuser,[
 ] ,async(req,res)=>{
