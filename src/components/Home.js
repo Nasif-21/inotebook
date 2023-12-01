@@ -1,9 +1,13 @@
-import React from "react";
+//import React, { useContext } from "react";
+import Notes from "./Notes";
+
+
 
 export const Home = () => {
+  
   return (
     <div>
-      <div className="container my-3">
+      <div className="container my-3" >
       <h1><center>Welcome to iNotebook</center></h1>
       <h3>Add your notes</h3>
       <form>
@@ -42,9 +46,8 @@ export const Home = () => {
         </button>
       </form>
       </div>
-      <div className="container my-3">
-      <h3>Your notes</h3>
-      </div>
+      <Notes/>
+
     </div>
   );
 };
