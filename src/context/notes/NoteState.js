@@ -47,7 +47,7 @@ const NoteState=(props)=>
       
       },
       
-      body: JSON.stringify(title,description,tag), 
+      body: JSON.stringify({title,description,tag}), 
     });
     const json=response.json()
 
