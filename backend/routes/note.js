@@ -103,7 +103,7 @@ res.json({"Success": "Note has been removed",note:note});
     }
     catch
     {
-        console.error(error.message);
+        //console.error(error.message);
         res.status(500).send("Internal error occur");
         
     }
