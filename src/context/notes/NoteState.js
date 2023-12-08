@@ -49,18 +49,10 @@ const NoteState=(props)=>
       
       body: JSON.stringify({title,description,tag}), 
     });
-    const json=response.json()
+    const note=response.json()
 
-    //Llogical part
-    const note={
-      "_id": "655c465dbfea1183805193523",
-      "user": "65545708ac0a3f2581d2e339",
-      "title": title,
-      "description": description,
-      "tag": tag,
-      "date": "2023-11-21T05:55:41.452Z",
-      "__v": 0
-    };
+    //logical part
+  
     setNotes(notes.concat(note))  //Set notes e notes e ja ase, oita ke note e push kore daw
     }
 
@@ -94,7 +86,7 @@ const NoteState=(props)=>
       //API call
       
       const response = await fetch(`${host}/api/note/updatenote/${id}`, {
-        method: "POST",
+        method: "PUT",
         
         headers: {
           "Content-Type": "application/json",
@@ -107,19 +99,21 @@ const NoteState=(props)=>
 
       const json=await response.json()
       
-
-
+      //We cannot change the react state like this, thats why we are appling some new ideas
+      let newNote=JSON.parse(JSON.stringify(notes))
       //Logic to client
-      for (let index = 0; index < notes.length; index++) {
-        const element = notes[index];
+      for (let index = 0; index < newNote.length; index++) {
+        const element = newNote[index];
         if(element._id===id)
         {
-          element.title=title;
-          element.description=description;
-          element.tag=tag;
+          newNote[index].title=title;
+          newNote[index].description=description;
+          newNote[index].tag=tag;
+          break;
         }
         
       }
+      setNotes(newNote);
     }
    
     return(
