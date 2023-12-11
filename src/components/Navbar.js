@@ -28,9 +28,10 @@ const Navbar = () => {
    
         
       </ul>
-      <form className="d-flex">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-        <button className="btn btn-outline-success" type="submit">Search</button>
+      <form className="d-flex ">
+        
+      <a className="btn btn-primary mx-2" href="#" role="button"><i class="fa-solid fa-right-to-bracket fa-bounce"></i></a>
+      <a className="btn btn-primary mx-2" href="#" role="button"><i class="fa-solid fa-user-plus fa-flip"></i></a>
       </form>
     </div>
   </div>

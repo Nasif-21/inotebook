@@ -14,30 +14,24 @@ function Footbar() {
   <section className="mb-4">
     
     <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-      ><i className="fab fa-facebook-f"></i
-    ></a>
+      ><i className="fa-brands fa-facebook fa-flip fa-xl"></i></a>
 
     <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-      ><i className="fab fa-twitter"></i
-    ></a>
+      ><i className="fa-brands fa-twitter fa-bounce fa-xl"></i></a>
 
     <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-      ><i className="fab fa-google"></i
-    ></a>
+      ><i className="fa-brands fa-google fa-beat fa-xl"></i></a>
 
     <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-      ><i className="fab fa-instagram"></i
-    ></a>
+      ><i className="fa-brands fa-instagram fa-fade fa-xl"></i></a>
 
     
     <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-      ><i className="fab fa-linkedin-in"></i
-    ></a>
+      ><i className="fa-brands fa-linkedin fa-shake fa-xl"></i></a>
 
     
-    <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-      ><i className="fab fa-github"></i
-    ></a>
+    <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+    <i className="fa-brands fa-github fa-spin fa-xl"></i></a>
   </section>
   
 </div>
