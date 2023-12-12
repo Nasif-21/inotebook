@@ -1,6 +1,7 @@
 import React,{useContext,useState} from 'react'
 import  noteContext  from "../context/notes/noteContext";
 
+
 export const AddNote = () => {
     const context=useContext(noteContext);
     const {addNote}=context;
@@ -17,7 +18,9 @@ export const AddNote = () => {
     }
   return (
     <div className="container my-3" >
-    <h1><center>Welcome to iNotebook</center></h1>
+
+     <h1><center>Welcome to iNotebook</center></h1> 
+    
     <h2><center><i class="fa-regular fa-hand fa-shake"></i></center></h2>
       <h3>Add your notes<i class="fa-solid fa-file-pen fa-bounce mx-2"></i></h3>
       <form>

@@ -30,8 +30,8 @@ const Navbar = () => {
       </ul>
       <form className="d-flex ">
         
-      <a className="btn btn-primary mx-2" href="#" role="button"><i class="fa-solid fa-right-to-bracket fa-bounce"></i></a>
-      <a className="btn btn-primary mx-2" href="#" role="button"><i class="fa-solid fa-user-plus fa-flip"></i></a>
+      <Link className="btn btn-primary mx-2" to="/login" role="button"><i class="fa-solid fa-right-to-bracket fa-bounce"></i></Link>
+      <Link className="btn btn-primary mx-2" to="/signup" role="button"><i class="fa-solid fa-user-plus fa-flip"></i></Link>
       </form>
     </div>
   </div>

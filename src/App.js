@@ -7,6 +7,8 @@ import  About  from './components/About';
 import NoteState from './context/notes/NoteState';
 import { Alert } from './components/Alert';
 import Footbar from './components/Footbar';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
       <div className='container'>
       <Routes>
         <Route path="/"  element={<Home/>} />
-        <Route path="/about"  element={<About/>} /> 
+        <Route path="/about"  element={<About/>} />
+        <Route path="/login"  element={<Login/>} /> 
+        <Route path="/signup"  element={<Signup/>} />  
       </Routes>
       </div>
       <Footbar/>
