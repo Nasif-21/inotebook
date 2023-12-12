@@ -25,15 +25,15 @@ export const AddNote = () => {
       <h3>Add your notes<i class="fa-solid fa-file-pen fa-bounce mx-2"></i></h3>
       <form>
         <div className="mb-3">
-          <label htmlFor="title" className="form-label"> Title</label>
+          <label htmlFor="title" className="form-label"> Title <i class="fa-solid fa-clipboard fa-beat fa-2xs"></i></label>
           <input type="text" className="form-control" value={note.title} id="title" name="title" onChange={onChange} aria-describedby="emailHelp" minLength={5} required/>
         </div>
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">Description</label>
+          <label htmlFor="description" className="form-label">Description <i class="fa-solid fa-file-invoice fa-beat fa-2xs"></i></label>
           <input type="text" className="form-control" value={note.description} id="description" name="description" onChange={onChange} minLength={5} required/>
         </div>
         <div className="mb-3">
-          <label htmlFor="tag" className="form-label">Tag</label>
+          <label htmlFor="tag" className="form-label">Tag <i class="fa-solid fa-tag fa-beat fa-2xs "></i></label>
           <input type="text" className="form-control" value={note.tag} id="tag" name="tag" onChange={onChange} />
         </div>
         <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
