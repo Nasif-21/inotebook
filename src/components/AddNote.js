@@ -21,19 +21,19 @@ export const AddNote = () => {
 
      <h1><center>Welcome to iNotebook</center></h1> 
     
-    <h2><center><i class="fa-regular fa-hand fa-shake"></i></center></h2>
-      <h3>Add your notes<i class="fa-solid fa-file-pen fa-bounce mx-2"></i></h3>
+    <h2><center><i className="fa-regular fa-hand fa-shake"></i></center></h2>
+      <h3>Add your notes<i className="fa-solid fa-file-pen fa-bounce mx-2"></i></h3>
       <form>
         <div className="mb-3">
-          <label htmlFor="title" className="form-label"> Title <i class="fa-solid fa-clipboard fa-beat fa-2xs"></i></label>
+          <label htmlFor="title" className="form-label"> Title <i className="fa-solid fa-clipboard fa-beat fa-2xs"></i></label>
           <input type="text" className="form-control" value={note.title} id="title" name="title" onChange={onChange} aria-describedby="emailHelp" minLength={5} required/>
         </div>
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">Description <i class="fa-solid fa-file-invoice fa-beat fa-2xs"></i></label>
+          <label htmlFor="description" className="form-label">Description <i className="fa-solid fa-file-invoice fa-beat fa-2xs"></i></label>
           <input type="text" className="form-control" value={note.description} id="description" name="description" onChange={onChange} minLength={5} required/>
         </div>
         <div className="mb-3">
-          <label htmlFor="tag" className="form-label">Tag <i class="fa-solid fa-tag fa-beat fa-2xs "></i></label>
+          <label htmlFor="tag" className="form-label">Tag <i className="fa-solid fa-tag fa-beat fa-2xs "></i></label>
           <input type="text" className="form-control" value={note.tag} id="tag" name="tag" onChange={onChange} />
         </div>
         <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>

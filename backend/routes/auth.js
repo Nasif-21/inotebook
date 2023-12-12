@@ -53,6 +53,7 @@ router.post('/login',[
   body('password','Password cannot be blank').exists(),  //If password is empty, it will not run
 
 ],async (req,res)=>{
+  let SUCCESS=false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -64,12 +65,14 @@ router.post('/login',[
   let user=await User.findOne({email});
   if(!user)
   {
-    return res.status(400).json({error:"Please give correct crendantials"});
+    SUCCESS=false
+    return res.status(400).json({SUCCESS,error:"Please give correct crendantials"});
   }
   const passwordCompare=await bcrypt.compare(password,user.password);  //Checking password of existing  with given password from the user 
   if(!passwordCompare)
   {
-    return res.status(400).json({error:"Please give correct crendantials"});
+    SUCCESS=false
+    return res.status(400).json({SUCCESS,error:"Please give correct crendantials"});
   }
   
     const data={
@@ -78,7 +81,8 @@ router.post('/login',[
       }
       }
       const authtoken =jwt.sign(data,JWT_SECRET);
-      res.json({authtoken})
+      SUCCESS=true
+      res.json({SUCCESS,authtoken})
   
 
   }

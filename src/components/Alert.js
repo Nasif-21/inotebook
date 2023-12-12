@@ -5,7 +5,7 @@ export const Alert = (props) => {
     <div>
       <div className="alert alert-primary" role="alert">
         {props.message}
-        <i class="fa-regular fa-face-smile mx-2"></i>
+        <i className="fa-regular fa-face-smile mx-2"></i>
       </div>
     </div>
   );
