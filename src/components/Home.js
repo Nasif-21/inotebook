@@ -5,11 +5,12 @@ import Footbar from "./Footbar";
 //import  AddNote  from "./AddNote";
 
 
-export const Home = () => {
-  
+
+export const Home = (props) => {
+  const {showAlert}=props;
   return (
     <div>
-      <Notes/>
+      <Notes showAlert={showAlert}/>
       <Footbar/>
     </div>
   );
